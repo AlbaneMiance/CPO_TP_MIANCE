@@ -33,31 +33,33 @@ public class TP1_convertisseur_MIANCE {
         System.out.println("5) De Kelvin vers Fahrenheit");
         System.out.println("6) De Fahrenheit vers Kelvin");
 
-        int choice = sc.nextInt(); // Lire le choix de l'utilisateur
-        
-         // Traitement du choix
+         int choice = sc.nextInt(); // Lire le choix de l'utilisateur
+
+        // Traitement du choix
         switch (choice) {
             case 1:
-                System.out.printf("%.2f degrés Celsius est égal à %.2f degrés Kelvin.%n", value, CelciusVersKelvin(value));
+                afficherResultat(value, CelciusVersKelvin(value), "Celsius", "Kelvin");
                 break;
             case 2:
-                System.out.printf("%.2f degrés Kelvin est égal à %.2f degrés Celsius.%n", value, KelvinVersCelcius(value));
+                afficherResultat(value, KelvinVersCelcius(value), "Kelvin", "Celsius");
                 break;
             case 3:
-                System.out.printf("%.2f degrés Celsius est égal à %.2f degrés Fahrenheit.%n", value, CelciusVersFarenheit(value));
+                afficherResultat(value, CelciusVersFarenheit(value), "Celsius", "Fahrenheit");
                 break;
             case 4:
-                System.out.printf("%.2f degrés Fahrenheit est égal à %.2f degrés Celsius.%n", value, FarenheitVersCelcius(value));
+                afficherResultat(value, FarenheitVersCelcius(value), "Fahrenheit", "Celsius");
                 break;
             case 5:
-                System.out.printf("%.2f degrés Kelvin est égal à %.2f degrés Fahrenheit.%n", value, KelvinVersFarenheit(value));
+                afficherResultat(value, KelvinVersFarenheit(value), "Kelvin", "Fahrenheit");
                 break;
             case 6:
-                System.out.printf("%.2f degrés Fahrenheit est égal à %.2f degrés Kelvin.%n", value, FarenheitVersKelvin(value));
+                afficherResultat(value, FarenheitVersKelvin(value), "Fahrenheit", "Kelvin");
                 break;
             default:
-                System.out.println("Choix invalide. Veuillez sélectionner un numéro de 1 à 6.");
+                System.out.println("Choix invalide. Sélectionnez un numéro entre 1 et 6.");
         }
+        
+        sc.close(); // Fermer le scanner
     }
 
     // Méthode pour convertir Celsius en Kelvin
@@ -90,5 +92,9 @@ public class TP1_convertisseur_MIANCE {
     public static double FarenheitVersKelvin(double tFarenheit) {
         double celsius = FarenheitVersCelcius(tFarenheit); // Convertir Fahrenheit à Celsius
         return CelciusVersKelvin(celsius); // Convertir Celsius à Kelvin
+    }
+
+    private static void afficherResultat(double value, double CelciusVersKelvin, String celsius, String kelvin) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
