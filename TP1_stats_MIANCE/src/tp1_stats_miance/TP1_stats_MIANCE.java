@@ -24,7 +24,7 @@ public class TP1_stats_MIANCE {
         Scanner sc = new Scanner(System.in);
 
         // Demander à l'utilisateur de saisir un nombre entier m
-       System.out.print("Veuillez saisir un nombre entier m (nombre de lancers de dés) : ");
+  System.out.print("Veuillez saisir un nombre entier m (nombre de lancers de dés) : ");
         int m = sc.nextInt();
 
         // Création du générateur de nombres aléatoires
@@ -37,7 +37,7 @@ public class TP1_stats_MIANCE {
             facesDe[face]++; // Incrémenter la case correspondante dans le tableau
         }
 
-        // Afficher les résultats
+        // Affichage des résultats
         System.out.println("Résultats après " + m + " lancers de dé :");
         for (int i = 0; i < facesDe.length; i++) {
             System.out.println("Face " + (i + 1) + ": " + facesDe[i] + " fois");
