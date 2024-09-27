@@ -37,12 +37,14 @@ public class TP1_stats_MIANCE {
             facesDe[face]++; // Incrémenter la case correspondante dans le tableau
         }
 
-        // Affichage des résultats
-        System.out.println("Résultats après " + m + " lancers de dé :");
+        // Affichage des résultats sous forme de pourcentages
+        System.out.println("Résultats après " + m + " lancers de dé (en pourcentages) :");
         for (int i = 0; i < facesDe.length; i++) {
-            System.out.println("Face " + (i + 1) + ": " + facesDe[i] + " fois");
+            // Calcul du pourcentage
+            double pourcentage = (facesDe[i] * 100.0) / m;
+            // Afficher le résultat avec 2 décimales
+            System.out.printf("Face %d: %.2f%%\n", (i + 1), pourcentage);
         }
-
         // Fermeture du scanner
         sc.close();
     }
