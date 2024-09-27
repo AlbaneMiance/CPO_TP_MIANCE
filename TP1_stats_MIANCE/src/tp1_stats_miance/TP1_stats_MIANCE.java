@@ -4,6 +4,8 @@
  */
 package tp1_stats_miance;
 
+import java.util.Scanner;
+
 /**
  *
  * @author alban
@@ -17,11 +19,17 @@ public class TP1_stats_MIANCE {
         // Création d'un tableau de 6 entiers, chaque case correspondant à une face du dé
         int[] facesDe = new int[6]; // Toutes les cases sont initialisées à 0 par défaut
 
-        // Affichage initial des valeurs du tableau (facultatif)
-        System.out.println("Tableau initial :");
-        for (int i = 0; i < facesDe.length; i++) {
-            System.out.println("Face " + (i + 1) + ": " + facesDe[i]);
-        }
+        // Création d'un scanner pour lire l'entrée utilisateur
+        Scanner sc = new Scanner(System.in);
+
+        // Demander à l'utilisateur de saisir un nombre entier m
+        System.out.print("Veuillez saisir un nombre entier m : ");
+        int m = sc.nextInt();
+
+        // Afficher la valeur de m (facultatif)
+        System.out.println("Vous avez saisi : " + m);
+
+        // Fermeture du scanner
+        sc.close();
     }
 }
- 
