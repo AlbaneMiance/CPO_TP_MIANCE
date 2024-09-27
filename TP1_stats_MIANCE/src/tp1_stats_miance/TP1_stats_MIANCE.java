@@ -4,6 +4,7 @@
  */
 package tp1_stats_miance;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -23,11 +24,24 @@ public class TP1_stats_MIANCE {
         Scanner sc = new Scanner(System.in);
 
         // Demander à l'utilisateur de saisir un nombre entier m
-        System.out.print("Veuillez saisir un nombre entier m : ");
+       System.out.print("Veuillez saisir un nombre entier m (nombre de lancers de dés) : ");
         int m = sc.nextInt();
 
-        // Afficher la valeur de m (facultatif)
-        System.out.println("Vous avez saisi : " + m);
+        // Création du générateur de nombres aléatoires
+        Random generateurAleat = new Random();
+
+        // Boucle de m itérations
+        for (int i = 0; i < m; i++) {
+            // Tirer un nombre aléatoire entre 0 et 5
+            int face = generateurAleat.nextInt(6); // Nombre aléatoire entre 0 et 5
+            facesDe[face]++; // Incrémenter la case correspondante dans le tableau
+        }
+
+        // Afficher les résultats
+        System.out.println("Résultats après " + m + " lancers de dé :");
+        for (int i = 0; i < facesDe.length; i++) {
+            System.out.println("Face " + (i + 1) + ": " + facesDe[i] + " fois");
+        }
 
         // Fermeture du scanner
         sc.close();
