@@ -22,23 +22,64 @@ public class TP1_guessMyNumber_MIANCE {
         Random generateurAleat = new Random();
         int nombreAleatoire = generateurAleat.nextInt(101); // Génère un nombre entre 0 et 100
         Scanner sc = new Scanner(System.in);
-        int nombreDevine = -1; // Initialisation à une valeur qui ne peut pas être le nombre à deviner
-        int tentatives = 0; // Initialisation du compteur de tentatives
+        int nombreDevine = -1;
+        int tentatives = 0;
+        int maxTentatives = Integer.MAX_VALUE; // Par défaut, tentatives illimitées
 
-        // Boucle pour demander à l'utilisateur de deviner le nombre
-        while (nombreDevine != nombreAleatoire) {
+        // Demander à l'utilisateur le niveau de difficulté
+        System.out.println("Choisissez un niveau de difficulté :");
+        System.out.println("1. Facile");
+        System.out.println("2. Normal");
+        System.out.println("3. Difficile");
+        System.out.print("Votre choix (1, 2 ou 3) : ");
+        int choixDifficulte = sc.nextInt();
+
+        // Ajustement selon le niveau de difficulté
+        switch (choixDifficulte) {
+            case 1: // Facile
+                System.out.println("Vous avez choisi le mode Facile.");
+                break;
+            case 2: // Normal
+                System.out.println("Vous avez choisi le mode Normal.Vous avez 15 tentatives.");
+                maxTentatives = 15; // Limitation des tentatives à 15
+                break;
+            case 3: // Difficile
+                System.out.println("Vous avez choisi le mode Difficile.Vous avez 10 tentatives.");
+                maxTentatives = 10; // Limitation des tentatives à 10
+                break;
+            default:
+                System.out.println("Choix invalide. Mode Normal par défaut.");
+        }
+
+        // Boucle de jeu
+        while (nombreDevine != nombreAleatoire && tentatives < maxTentatives) {
             System.out.print("Devinez un nombre entre 0 et 100 : ");
             nombreDevine = sc.nextInt();
-            tentatives++; // Incrémente le compteur à chaque tentative
+            tentatives++;
+
+            int ecart = Math.abs(nombreAleatoire - nombreDevine); // Calcul de l'écart
 
             // Comparaison du nombre deviné avec le nombre aléatoire
             if (nombreDevine < nombreAleatoire) {
-                System.out.println("Trop petit !");
+                if (choixDifficulte == 1 && ecart > 20) {
+                    System.out.println("Vraiment trop petit !");
+                } else {
+                    System.out.println("Trop petit !");
+                }
             } else if (nombreDevine > nombreAleatoire) {
-                System.out.println("Trop grand !");
+                if (choixDifficulte == 1 && ecart > 20) {
+                    System.out.println("Vraiment trop grand !");
+                } else {
+                    System.out.println("Trop grand !");
+                }
             } else {
                 System.out.println("Gagné !");
                 System.out.println("Vous avez trouvé le nombre en " + tentatives + " tentatives.");
+            }
+
+            // En mode Difficile, vérifier si les tentatives sont épuisées
+            if (tentatives == maxTentatives && nombreDevine != nombreAleatoire) {
+                System.out.println("Dommage, vous avez épuisé vos " + maxTentatives + " tentatives. Le nombre à deviner était " + nombreAleatoire + ".");
             }
         }
 
