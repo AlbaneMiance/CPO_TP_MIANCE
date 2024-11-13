@@ -11,57 +11,81 @@ package tp2_convertisseurobjet_miance;
  * Classe Convertisseur pour effectuer des conversions de températures
  */
 public class Convertisseur {
-    // Attribut pour compter le nombre de conversions effectuées
-    private int nbConversions;
-
-    // Constructeur par défaut
+    public int nbConversions;
+    
+    //Constructeur
     public Convertisseur() {
-        this.nbConversions = 0;
-    }
-
-    // Méthode pour convertir Celsius en Kelvin
-    public float CelciusVersKelvin(float celcius) {
-        nbConversions++;
-        return celcius + 273.15f;
-    }
-
-    // Méthode pour convertir Kelvin en Celsius
-    public float KelvinVersCelcius(float kelvin) {
-        nbConversions++;
-        return kelvin - 273.15f;
-    }
-
-    // Méthode pour convertir Fahrenheit en Celsius
-    public float FarenheitVersCelcius(float fahrenheit) {
-        nbConversions++;
-        return (fahrenheit - 32) * 5 / 9;
-    }
-
-    // Méthode pour convertir Celsius en Fahrenheit
-    public float CelciusVersFarenheit(float celcius) {
-        nbConversions++;
-        return (celcius * 9 / 5) + 32;
-    }
-
-    // Méthode pour convertir Fahrenheit en Kelvin
-    public float FarenheitVersKelvin(float fahrenheit) {
-        nbConversions++;
-        float celcius = FarenheitVersCelcius(fahrenheit);
-        return CelciusVersKelvin(celcius);
-    }
-
-    // Méthode pour convertir Kelvin en Fahrenheit
-    public float KelvinVersFarenheit(float kelvin) {
-        nbConversions++;
-        float celcius = KelvinVersCelcius(kelvin);
-        return CelciusVersFarenheit(celcius);
-    }
-
-    // Redéfinition de toString() pour fournir une représentation textuelle de l'objet
+        nbConversions=0;
+    }//Fin Méthode
+    
+    //toString
     @Override
-    public String toString() {
-        return "Nombre total de conversions effectuées : " + nbConversions;
+    public String toString () {
+        return ""+nbConversions;
+    }   //Fin toString
+    
+    // Methode Celcius/Kelvin
+    public float CelciusVersKelvin (float tCelcius) {
+    //Entrée : double représentant température en Celcius
+    //Sortie : double représentant température en Kelvin
+    //Variables éventuelles 
+    float tKelvin; tKelvin = (float) (tCelcius+273.15);
+    nbConversions++;
+    return tKelvin;
     }
-}
-   
+    
+    //Methode Kelvin/Celcius
+    public float KelvinVersCelcius (float tKelvin) {
+    //Entrée : double représentant température en Kelvin
+    //Sortie : double représentant température en Celcius
+    //Variables éventuelles 
+    float tCelcius; tCelcius = (float) (tKelvin-273.15);
+    nbConversions++;
+    return tCelcius;
+    }
+    
+    //Methode Celcius/Farenheit
+    public float CelciusVersFarenheit (float tCelcius) {
+    //Entrée : double représentant température en Celcius
+    //Sortie : double représentant température en Farenheit
+    //Variables éventuelles 
+    float tFarenheit; tFarenheit = (float) (tCelcius*1.8000+32);
+    nbConversions++;
+    return tFarenheit;
+    }
+    
+    //Methode Farenheit/Celcius
+    public double FarenheitVersCelcius (float tFarenheit) {
+    //Entrée : double représentant température en Farenheit
+    //Sortie : double représentant température en Celcius
+    //Variables éventuelles 
+    float tCelcius; tCelcius = (float) ((tFarenheit-32)/1.8000);
+    nbConversions++;
+    return tCelcius;
+    }
+    
+    //Methode Kelvin/Farenheit
+    public float KelvinVersFarenheit (float tKelvin) {
+    //Entrée : double représentant température en Kelvin
+    //Sortie : double représentant température en Farenheit
+    //Variables éventuelles 
+    float tFarenheit, tCelcius;
+    tCelcius = KelvinVersCelcius(tKelvin);
+    tFarenheit = CelciusVersFarenheit(tCelcius);
+    nbConversions++;
+    return tFarenheit;
+    }
+    
+    //Methode Farenheit/Kelvin
+    public float FarenheitVersKelvin (float tFarenheit) {
+    //Entrée : double représentant température en Farenheit
+    //Sortie : double représentant température en Kelvin
+    //Variables éventuelles 
+    float tKelvin, tCelcius;
+    tCelcius = (float) FarenheitVersCelcius(tFarenheit);
+    tKelvin = CelciusVersKelvin(tCelcius);
+    nbConversions++;
+    return tKelvin;
+    }
 
+}//Fin classe
